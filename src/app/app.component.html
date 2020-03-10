@@ -2,8 +2,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-<!--      <app-galgegame></app-galgegame>-->
-      <app-login></app-login>
+      <app-login (eventEmitterLogin)="showFeature($event)" *ngIf="!loggedIn"></app-login>
+      <app-galgegame *ngIf="loggedIn"></app-galgegame>
     </div>
   </div>
 </div>
