@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'forprojekt1';
-  loggedIn = true;
+  loggedIn = false;
 
   showFeature($event: boolean) {
     this.loggedIn = $event;
