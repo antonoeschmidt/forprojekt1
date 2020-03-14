@@ -27,7 +27,7 @@
 </div>
 <div class="row">
   <div class="col-sm-3">
-    <input type="text" id="name" class="form-control" ngForm #guess/>
+    <input [(ngModel)]="guessText" #inputElement type="text" id="name" class="form-control" ngModel maxlength="1"/>
   </div>
 </div>
 <div class="row">
@@ -40,12 +40,12 @@
       </button>
       <button type="button"
               class="btn btn-danger"
-              (click)="guessLetter(guess.value)">
+              (click)="guessLetter(guessText)">
         Gæt bogstav
       </button>
       <button type="button"
               class="btn btn-success"
-              (click)="testKnap(guess.value)">
+              (click)="testKnap(guessText)">
         Test
       </button>
     </div>

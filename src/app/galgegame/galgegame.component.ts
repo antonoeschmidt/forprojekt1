@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
 import {ApiService} from '../api.service';
@@ -12,7 +12,11 @@ import {GameModel} from '../shared/game.model';
 export class GalgegameComponent implements OnInit {
   dataArray = [];
   gameData: GameModel;
-  imgSrc = 'assets/galge.png'
+  imgSrc = 'assets/galge.png';
+  guessText: string;
+  @ViewChild('inputElement', {static: false}) inputElement: ElementRef<HTMLElement>;
+
+
 
   constructor(private http: HttpClient, private apiService: ApiService) {
     // this.getGame();
@@ -30,15 +34,13 @@ export class GalgegameComponent implements OnInit {
         this.gameData = data;
       });
     console.log(this.gameData);
-
-
   }
 
   getGame() {
     this.http.get('http://localhost:8080/newgame')
       .toPromise()
       .then((data: GameModel) => {
-        console.log(data)
+        console.log(data);
         this.gameData = data;
         console.log('Visible word: ' + this.gameData.visibleWord);
         console.log('Lives: ' + this.gameData.lives);
@@ -72,6 +74,8 @@ export class GalgegameComponent implements OnInit {
           console.log(this.dataArray);
           this.dataArray = [];
           this.updatePicture(this.gameData.lives);
+          this.guessText = '';
+          this.inputElement.nativeElement.focus();
         }
       );
   }
@@ -121,12 +125,6 @@ export class GalgegameComponent implements OnInit {
   //       }
   //     );
   // }
-
-
-
-
-
-
 
 
 //   this.http.get('http://localhost:8080/newgame').toPromise()
