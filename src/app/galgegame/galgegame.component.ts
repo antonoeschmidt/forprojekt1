@@ -24,19 +24,6 @@ export class GalgegameComponent implements OnInit {
   ngOnInit() {
   }
 
-  testKnap(user: string, pass: string) {
-    user = 's163051';
-    pass = 'koden123';
-    this.http.post('http://localhost:8080/login', {
-      user: user,
-      pass: pass
-    })
-      .toPromise()
-      .then((data: boolean) => {
-        console.log(data);
-      });
-  }
-
   getGame() {
     this.http.get('http://localhost:8080/newgame')
       .toPromise()
