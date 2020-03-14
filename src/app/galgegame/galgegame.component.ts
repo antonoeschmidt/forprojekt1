@@ -24,15 +24,17 @@ export class GalgegameComponent implements OnInit {
   ngOnInit() {
   }
 
-  testKnap(value: string) {
-
-    //  virker her ved at putte data i array 
-    this.http.get('http://localhost:8080/newgame')
+  testKnap(user: string, pass: string) {
+    user = 's163051';
+    pass = 'koden123';
+    this.http.post('http://localhost:8080/login', {
+      user: user,
+      pass: pass
+    })
       .toPromise()
-      .then((data: GameModel) => {
-        this.gameData = data;
+      .then((data: boolean) => {
+        console.log(data);
       });
-    console.log(this.gameData);
   }
 
   getGame() {
