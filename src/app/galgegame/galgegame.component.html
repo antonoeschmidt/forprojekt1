@@ -1,18 +1,21 @@
-<div class="row">
-  <div class="col-xs-12">
+<div class="row" xmlns:text-align="http://www.w3.org/1999/xhtml" xmlns:text-align="http://www.w3.org/1999/xhtml"
+     xmlns:text-align="http://www.w3.org/1999/xhtml" xmlns:text-align="http://www.w3.org/1999/xhtml"
+     xmlns:text-align="http://www.w3.org/1999/xhtml">
+  <div class="hej" align="center">
     <h1>Galgeleg</h1>
   </div>
 </div>
+
 <hr>
 
 <div class="row">
-  <div class="col-xs-12">
-    <img [src]="imgSrc" alt="https://www.cookingclassy.com/wp-content/uploads/2018/08/chicken-curry-11-768x1152.jpg" class="img-responsive"
-         style="max-height: 450px">
+  <div class="col-xs-12" align="center" >
+    <img [src]="imgSrc" alt="https://www.cookingclassy.com/wp-content/uploads/2018/08/chicken-curry-11-768x1152.jpg"
+         class="img-responsive" width="300px">
   </div>
 </div>
 
-<div class="row">
+<div class="row" align="center" >
   <div class="col-xs-12" *ngIf="gameData; else infoText">
     {{gameData.visibleWord}}
   </div>
@@ -26,16 +29,16 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-3">
+  <div class="mySpecialng">
     <input [(ngModel)]="guessText" #inputElement type="text" id="name" class="form-control" ngModel maxlength="1"/>
   </div>
 </div>
-<div class="row">
+<div class="row" align="center" >
   <div class="col-xs-12">
     <div class="btn-group">
       <button type="button"
               class="btn btn-primary"
-      (click)="getGame()">
+              (click)="getGame()">
         Nyt spil
       </button>
       <button type="button"

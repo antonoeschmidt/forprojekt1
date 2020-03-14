@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+.defaultStyle{
+  margin-top: 1cm;
+  /*display: inline-block;*/
+  /*text-align: center;*/
+  /*align-items: center;*/
+}
+
+.mySpecialng{
+
+  margin-bottom: 1cm;
+  width: 10%;
+  margin-left : 45%
+
+}
