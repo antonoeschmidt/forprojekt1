@@ -17,7 +17,6 @@ export class GalgegameComponent implements OnInit {
   @ViewChild('inputElement', {static: false}) inputElement: ElementRef<HTMLElement>;
 
 
-
   constructor(private http: HttpClient, private apiService: ApiService) {
     // this.getGame();
   }
@@ -54,6 +53,11 @@ export class GalgegameComponent implements OnInit {
   }
 
   guessLetter(value: string) {
+    if (value == null || value == '' || value == ' ') {
+      alert('Indtast bogstav');
+      return;
+    }
+
     this.apiService.guessLetter(value)
       .toPromise()
       .then(
