@@ -82,6 +82,13 @@ export class GalgegameComponent implements OnInit {
           this.updatePicture(this.gameData.lives);
           this.guessText = '';
           this.inputElement.nativeElement.focus();
+          if (this.gameData.isGameOver && this.gameData.isGameWon) {
+            alert('Tillykke du har vundet!')
+            this.getGame();
+          } else if (this.gameData.isGameOver) {
+            alert('Du tabte desværre.')
+            this.getGame();
+          }
         }
       );
   }
