@@ -4,13 +4,16 @@ export class GameModel {
   private _usedLetters: string[];
   private _isGameOver: boolean;
   private _statusMsg: string;
+  private _isGameWon: boolean;
 
-  constructor(visibleWord: string, usedLetters: string[], lives: number, statusMsg: string, isGameOver: boolean) {
+  constructor(visibleWord: string, usedLetters: string[], lives: number, statusMsg: string,
+              isGameOver: boolean, isGameWon: boolean) {
     this._visibleWord = visibleWord;
     this._lives = lives;
     this._usedLetters = usedLetters;
     this._isGameOver = isGameOver;
     this._statusMsg = statusMsg;
+    this._isGameWon = isGameWon;
   }
 
   get visibleWord(): string {
@@ -52,4 +55,13 @@ export class GameModel {
   set statusMsg(value: string) {
     this._statusMsg = value;
   }
+
+  get isGameWon(): boolean {
+    return this._isGameWon;
+  }
+
+  set isGameWon(value: boolean) {
+    this._isGameWon = value;
+  }
+
 }

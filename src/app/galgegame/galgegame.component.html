@@ -7,7 +7,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <img src="assets/galge.png" alt="https://www.cookingclassy.com/wp-content/uploads/2018/08/chicken-curry-11-768x1152.jpg" class="img-responsive"
+    <img [src]="imgSrc" alt="https://www.cookingclassy.com/wp-content/uploads/2018/08/chicken-curry-11-768x1152.jpg" class="img-responsive"
          style="max-height: 450px">
   </div>
 </div>
@@ -23,9 +23,6 @@
 <div class="row">
   <div class="col-xs-12" *ngIf="gameData">
     Brugte bogstaver: {{gameData.usedLetters}}
-  </div>
-  <div class="col-xs-12" *ngIf="!gameData">
-
   </div>
 </div>
 <div class="row">

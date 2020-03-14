@@ -12,6 +12,7 @@ import {GameModel} from '../shared/game.model';
 export class GalgegameComponent implements OnInit {
   dataArray = [];
   gameData: GameModel;
+  imgSrc = 'assets/galge.png'
 
   constructor(private http: HttpClient, private apiService: ApiService) {
     // this.getGame();
@@ -25,11 +26,10 @@ export class GalgegameComponent implements OnInit {
     //  virker her ved at putte data i array 
     this.http.get('http://localhost:8080/newgame')
       .toPromise()
-      .then( (data: GameModel) => {
+      .then((data: GameModel) => {
         this.gameData = data;
       });
     console.log(this.gameData);
-
 
 
   }
@@ -37,13 +37,16 @@ export class GalgegameComponent implements OnInit {
   getGame() {
     this.http.get('http://localhost:8080/newgame')
       .toPromise()
-      .then( (data: GameModel) => {
+      .then((data: GameModel) => {
+        console.log(data)
         this.gameData = data;
         console.log('Visible word: ' + this.gameData.visibleWord);
         console.log('Lives: ' + this.gameData.lives);
         console.log('Used letters: ' + this.gameData.usedLetters);
         console.log('IsGameOver: ' + this.gameData.isGameOver);
         console.log('StatusMsg : ' + this.gameData.statusMsg);
+        console.log('IsGameWon: ' + this.gameData.isGameWon);
+        this.updatePicture(this.gameData.lives);
       });
 
   }
@@ -59,21 +62,73 @@ export class GalgegameComponent implements OnInit {
             }
           }
           this.gameData = new GameModel(this.dataArray[0], this.dataArray[1],
-            this.dataArray[2], this.dataArray[3], this.dataArray[4]);
+            this.dataArray[2], this.dataArray[3], this.dataArray[5], this.dataArray[4]);
           console.log('Visible word: ' + this.gameData.visibleWord);
           console.log('Lives: ' + this.gameData.lives);
           console.log('Used letters: ' + this.gameData.usedLetters);
           console.log('IsGameOver: ' + this.gameData.isGameOver);
           console.log('StatusMsg : ' + this.gameData.statusMsg);
+          console.log('IsGameWon: ' + this.gameData.isGameWon);
           console.log(this.dataArray);
           this.dataArray = [];
+          this.updatePicture(this.gameData.lives);
         }
       );
+  }
 
-
+  updatePicture(lives: number) {
+    switch (lives) {
+      case lives = 0:
+        this.imgSrc = 'assets/galge.png';
+        break;
+      case lives = 1:
+        this.imgSrc = 'assets/forkert1.png';
+        break;
+      case lives = 2:
+        this.imgSrc = 'assets/forkert2.png';
+        break;
+      case lives = 3:
+        this.imgSrc = 'assets/forkert3.png';
+        break;
+      case lives = 4:
+        this.imgSrc = 'assets/forkert4.png';
+        break;
+      case lives = 5:
+        this.imgSrc = 'assets/forkert5.png';
+        break;
+      case lives = 6:
+        this.imgSrc = 'assets/forkert6.png';
+        break;
+    }
   }
 
   // legacy:
+
+  // bedre metode, men virker ikke 100%
+  // guessLetter(value: string) {
+  //   this.http.post('http://localhost:8080/guess', value)
+  //     .toPromise()
+  //     .then(
+  //       (data: GameModel) => {
+  //         console.log(data)
+  //         this.gameData = data;
+  //         console.log('Visible word: ' + this.gameData.visibleWord);
+  //         console.log('Lives: ' + this.gameData.lives);
+  //         console.log('Used letters: ' + this.gameData.usedLetters);
+  //         console.log('IsGameOver: ' + this.gameData.isGameOver);
+  //         console.log('StatusMsg : ' + this.gameData.statusMsg);
+  //         this.updatePicture(this.gameData.lives);
+  //       }
+  //     );
+  // }
+
+
+
+
+
+
+
+
 //   this.http.get('http://localhost:8080/newgame').toPromise()
 // .then(data => {
 //   for (let key in data) {
