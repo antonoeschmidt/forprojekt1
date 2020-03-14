@@ -8,17 +8,19 @@ import {HttpClient} from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   @Output() eventEmitterLogin = new EventEmitter<boolean>();
+  posts;
 
-  constructor(private http: HttpClient) {
+  constructor() {
   }
 
   ngOnInit() {
   }
 
   clickOnLoginBtn(value: boolean) {
-    this.http.get('http://localhost:8090/rest/hej').subscribe(data => {
-      console.log(data);
-    });
+    // this.http.get('http://localhost:8090/rest/hej').subscribe(data => {
+    //   console.log(data);
+    // });
+
 
 
     // tslint:disable-next-line:max-line-length

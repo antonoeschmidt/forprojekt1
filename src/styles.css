@@ -1,10 +1,1 @@
 /* You can add global styles to this file, and also import other style files */
-.parent {
-  display: table;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
- .bottom-three {
-   margin-bottom: 1cm;
- }
