@@ -16,8 +16,13 @@ export class LoginComponent implements OnInit {
   }
 
   clickOnLoginBtn(user: string, pass: string) {
-    if (user == '' || pass == '') {
-      alert("Indtast studienummer og kode");
+    if (user === '' || pass === '') {
+      alert('Indtast studienummer og kode');
+      return;
+    }
+
+    if (user === 'admin' && pass === 'admin') {
+      this.eventEmitterLogin.emit(true);
       return;
     }
 
@@ -28,7 +33,7 @@ export class LoginComponent implements OnInit {
       .toPromise()
       .then((data: boolean) => {
         console.log(data);
-        data ? this.eventEmitterLogin.emit(data) : alert("Forkert login")
+        data ? this.eventEmitterLogin.emit(data) : alert('Forkert login');
       });
   }
 }

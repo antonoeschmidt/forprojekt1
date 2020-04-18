@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
 import {ApiService} from '../api.service';
 import {GameModel} from '../shared/game.model';
+import {TestObject} from "../shared/test.object";
 
 @Component({
   selector: 'app-galgegame',
@@ -42,7 +43,7 @@ export class GalgegameComponent implements OnInit {
   }
 
   guessLetter(value: string) {
-    if (value == null || value == '' || value == ' ') {
+    if (value === null || value === '' || value === ' ') {
       alert('Indtast bogstav');
       return;
     }
@@ -104,6 +105,19 @@ export class GalgegameComponent implements OnInit {
         this.imgSrc = 'assets/forkert6.png';
         break;
     }
+  }
+
+  testPost() {
+
+    let tObj = new TestObject("harald", 123)
+
+    this.http.post('http://localhost:8080/newtestpost', tObj)
+        .toPromise()
+        .then(
+          (data: string) => {
+            console.log(data)
+          }
+        );
   }
 
   // legacy:

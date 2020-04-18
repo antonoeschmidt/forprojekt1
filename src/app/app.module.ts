@@ -16,11 +16,11 @@ import {FormsModule} from '@angular/forms';
     GalgegameComponent,
     LoginComponent
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
